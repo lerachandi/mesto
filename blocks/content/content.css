@@ -1,7 +1,7 @@
 .content {
   /*width: 100%;*/
   max-width: 880px;
-  margin: 0 15.625% 0;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 450px){
