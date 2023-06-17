@@ -1,0 +1,13 @@
+.content {
+  /*width: 100%;*/
+  max-width: 880px;
+  margin: 0 15.625% 0;
+}
+
+@media screen and (max-width: 450px){
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+}

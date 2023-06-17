@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css" class="stylesheet" type="text/css">
+  <script src="./scripts/index.js" defer></script>
+
+  <title>Место</title>
+</head>
+
+<body class="page">
+  <div class="content">
+    <header class="header">
+      <img src="./images/header_logo.svg" alt="логотип с названием проекта Место" class="header__logo">
+    </header>
+    <main class="main">
+      <section class="profile">
+        <div class="profile__avatar">
+          <img src="./images/profile__avatar.jpg" alt="Аватар пользователя" class="profile__pic">
+        </div>
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <p class="profile__description">Исследователь океана</p>
+          <button class="profile__edit-button" type="button"></button>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+
+      <section class="cards">
+        <div class="cards__item">
+          <img src="./images/1.png" alt="" class="cards__image">
+          <div class="cards__caption">
+            <h2 class="cards__title">Карачаевск</h2>
+            <div class="cards__likes">
+              <button class="cards__like" type="button"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards__item">
+          <img src="./images/2.png" alt="" class="cards__image">
+          <div class="cards__caption">
+            <h2 class="cards__title">Гора Эльбрус</h2>
+            <div class="cards__likes">
+              <button class="cards__like" type="button"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards__item">
+          <img src="./images/3.png" alt="" class="cards__image">
+          <div class="cards__caption">
+            <h2 class="cards__title">Домбай</h2>
+            <div class="cards__likes">
+              <button class="cards__like" type="button"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards__item">
+          <img src="./images/4.jpg" alt="" class="cards__image">
+          <div class="cards__caption">
+            <h2 class="cards__title">Étretat, Normandy</h2>
+            <div class="cards__likes">
+              <button class="cards__like" type="button"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards__item">
+          <img src="./images/5.jpg" alt="" class="cards__image">
+          <div class="cards__caption">
+            <h2 class="cards__title">Fagradalsfjall, Grindavíkurbær, Iceland</h2>
+            <div class="cards__likes">
+              <button class="cards__like" type="button"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards__item">
+          <img src="./images/6.jpg" alt="" class="cards__image">
+          <div class="cards__caption">
+            <h2 class="cards__title">Северная Осетия</h2>
+            <div class="cards__likes">
+              <button class="cards__like" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">
+        © 2023 Valeriya Leonova
+      </p>
+    </footer>
+    <aside class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form">
+          <input type="text" class="popup__input popup__input_profile_edit-name" placeholder="Имя" name="profileName"
+            value required>
+          <input type="text" class="popup__input popup__input_profile_edit-description" placeholder="Описание"
+            name="profileDescription" value required>
+          <button class="popup__save-button" type="submit">Сохранить</button>
+        </form>
+        <button class="popup__close-button" type="button"></button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="popup"></div>
+
+
+</body>
+
+</html>
