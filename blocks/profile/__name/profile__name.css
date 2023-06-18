@@ -9,7 +9,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  text-align: center; /*Ревью: при использовании одной буквы центрирование не должно пропадать*/
+  /*text-align: center;*/
 }
 
 @media screen and (max-width: 960px) {
