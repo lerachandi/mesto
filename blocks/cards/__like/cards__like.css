@@ -8,7 +8,7 @@
   padding: 0;
   margin: 0;
   cursor: pointer;
-  background-color: #FFFFFF;
+  background-color: transparent;
   transition: 0.5s ease-out;
 }
 

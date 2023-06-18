@@ -1,10 +1,6 @@
 .popup__input {
   color: #000000;
-  display: flex;
-  justify-content: start;
-  align-items: flex-start;
-  min-width: 358px;
-  min-height: 27px;
+  width: 100%;
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -15,11 +11,11 @@
   border-left: none;
   border-bottom: 1px solid rgb(0, 0, 0, 0.2);
   outline: none;
-  padding: 0;
+  padding: 13px 0 8px;
 }
 
 .popup__input:first-of-type {
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 }
 
 @media screen and (max-width: 650px) {

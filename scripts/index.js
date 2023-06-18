@@ -51,5 +51,5 @@ function openPopup() {
 
 //Закрытие попапа
 function closePopup() {
-  popupElement.classList.toggle("popup_opened");
+  popupElement.classList.remove("popup_opened");
 }
