@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./pages/index.css" class="stylesheet" type="text/css">
   <script src="./scripts/index.js" defer></script>
 
+
   <title>Место</title>
 </head>
 
@@ -30,7 +31,7 @@
       </section>
 
       <section class="cards">
-        <div class="cards__item">
+        <!-- <div class="cards__item">
           <img src="./images/1.png" alt="Фото Монастыря в Карачаевске" class="cards__image">
           <div class="cards__caption">
             <h2 class="cards__title">Карачаевск</h2>
@@ -88,7 +89,7 @@
             <button class="cards__like" type="button"></button>
 
           </div>
-        </div>
+        </div> -->
       </section>
     </main>
 
@@ -97,7 +98,8 @@
         © 2023 Valeriya Leonova
       </p>
     </footer>
-    <div class="popup">
+
+    <div class="popup popup_edit-profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="popup__form_edit-profile" method="post">
@@ -110,8 +112,44 @@
         <button class="popup__close-button" type="button"></button>
       </div>
     </div>
+
+    <div class="popup popup_add-mesto">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" id="popup__form_add-mesto" method="post">
+          <input type="text" class="popup__input popup__input_mesto-name" placeholder="Название" value required>
+          <input type="url" class="popup__input popup__input_mesto-url" placeholder="Ссылка на картинку"
+            name="mestoDescription" value required>
+          <button class="popup__save-button" type="submit">Создать</button>
+        </form>
+        <button class="popup__close-button" type="button"></button>
+      </div>
+    </div>
+
+    <div class="popup popup_opened-image">
+      <div class="popup__content">
+        <img class="popup__image" src="" alt="">
+        <h2 class="popup__description">Байкал</h2>
+        <button class="popup__close-button" type="button"></button>
+      </div>
+    </div>
+
+
+
   </div>
 
+  <template id="cards-template">
+    <div class="cards__item">
+      <button class="cards__delete" type="button"></button>
+      <img src="" alt="" class="cards__image">
+      <div class="cards__caption">
+        <h2 class="cards__title"></h2>
+        <button class="cards__like" type="button"></button>
+      </div>
+    </div>
+  </template>
+
+  <script src="./scripts/initialCards.js"></script>
 </body>
 
 </html>
