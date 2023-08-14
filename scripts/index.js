@@ -34,7 +34,7 @@ const closeButtons = document.querySelectorAll(".popup__close-button");
 const modalTitle = cardPopupImage.querySelector(".popup__description");
 
 //Создание карточек
-function cardData(element) {
+function createCard(cardData) {
   // сначала копируем ноду с темплейтом
   // затем находим селекторы изображения, названием, удалением и лайка
   const card = cardsTemplate.cloneNode(true);
@@ -43,9 +43,9 @@ function cardData(element) {
   const cardDeleteButton = card.querySelector(".cards__delete");
   const cardLikeButton = card.querySelector(".cards__like");
 
-  cardName.textContent = element.name; // подтягиваем название из initialCards
-  cardImage.src = element.link; // подтягиваем ссылку из initialCards
-  cardImage.alt = `Фотография ${element.name}`; // альтернативный текст
+  cardName.textContent = cardData.name; // подтягиваем название из initialCards
+  cardImage.src = cardData.link; // подтягиваем ссылку из initialCards
+  cardImage.alt = `Фотография ${cardData.name}`; // альтернативный текст
 
   // слушатель на клик по лайку, после клика класс должен меняться,
   // т.е. после клика лайк становится черным
@@ -61,9 +61,9 @@ function cardData(element) {
 
   // слушатель для открытия попапа картинки
   cardImage.addEventListener("click", () => {
-    modalImage.src = element.link;
-    modalImage.alt = `Фотография ${element.name}`;
-    modalTitle.textContent = element.name;
+    modalImage.src = cardData.link;
+    modalImage.alt = `Фотография ${cardData.name}`;
+    modalTitle.textContent = cardData.name;
     openPopup(cardPopupImage);
   });
 
@@ -72,7 +72,7 @@ function cardData(element) {
 
 //добавление карточки в начало списка
 function renderCard(item) {
-  cardsContainer.prepend(cardData(item));
+  cardsContainer.prepend(createCard(item));
 };
 
 //считываем и передаем элементы из массива initialCards
@@ -85,11 +85,11 @@ function renderCardsArray(arr) {
 //функция создания нового места из формы
 function handleAddPlace(evt) {
   evt.preventDefault();
-  const cardData = {
+  const createCard = {
     name: cardNameInput.value,
     link: cardUrlInput.value,
   };
-  renderCard(cardData);
+  renderCard(createCard);
   closePopup(popupPlace);
 };
 
