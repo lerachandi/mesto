@@ -34,8 +34,8 @@ const closeButtons = document.querySelectorAll(".popup__close-button");
 const modalTitle = cardPopupImage.querySelector(".popup__description");
 
 //Создание карточек
-function createCard(elements) {
-  // сначала копируем ноду с темплейтом,
+function cardData(element) {
+  // сначала копируем ноду с темплейтом
   // затем находим селекторы изображения, названием, удалением и лайка
   const card = cardsTemplate.cloneNode(true);
   const cardImage = card.querySelector(".cards__image");
@@ -43,9 +43,9 @@ function createCard(elements) {
   const cardDeleteButton = card.querySelector(".cards__delete");
   const cardLikeButton = card.querySelector(".cards__like");
 
-  cardName.textContent = elements.name; // подтягиваем название из initialCards
-  cardImage.src = elements.link; // подтягиваем ссылку из initialCards
-  cardImage.alt = `Фотография ${elements.name}`; // альтернативный текст
+  cardName.textContent = element.name; // подтягиваем название из initialCards
+  cardImage.src = element.link; // подтягиваем ссылку из initialCards
+  cardImage.alt = `Фотография ${element.name}`; // альтернативный текст
 
   // слушатель на клик по лайку, после клика класс должен меняться,
   // т.е. после клика лайк становится черным
@@ -61,26 +61,26 @@ function createCard(elements) {
 
   // слушатель для открытия попапа картинки
   cardImage.addEventListener("click", () => {
-    modalImage.src = elements.link;
-    modalImage.alt = `Фотография ${elements.name}`;
-    modalTitle.textContent = elements.name;
+    modalImage.src = element.link;
+    modalImage.alt = `Фотография ${element.name}`;
+    modalTitle.textContent = element.name;
     openPopup(cardPopupImage);
   });
 
   return card;
-}
+};
 
 //добавление карточки в начало списка
 function renderCard(item) {
-  cardsContainer.prepend(createCard(item));
-}
+  cardsContainer.prepend(cardData(item));
+};
 
 //считываем и передаем элементы из массива initialCards
 function renderCardsArray(arr) {
   for (let i = 0; i < arr.length; i++) {
     renderCard(arr[i]);
   }
-}
+};
 
 //функция создания нового места из формы
 function handleAddPlace(evt) {
@@ -88,10 +88,10 @@ function handleAddPlace(evt) {
   const cardData = {
     name: cardNameInput.value,
     link: cardUrlInput.value,
-}
+  };
   renderCard(cardData);
   closePopup(popupPlace);
-}
+};
 
 // Редактирование профиля: обработчик «отправки» формы
 function handleProfileFormSubmit(evt) {
@@ -100,17 +100,17 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
   closePopup(popupEditProfile); // попап закроется по клику на кнопку сохранения
-}
+};
 
 //Открытие попапа
 function openPopup(evt) {
   evt.classList.add("popup_opened");
-}
+};
 
 //Закрытие попапов
 function closePopup(evt) {
   evt.classList.remove("popup_opened");
-}
+};
 
 //Создание слушателей для кнопок закрытия
 closeButtons.forEach((button) => {
