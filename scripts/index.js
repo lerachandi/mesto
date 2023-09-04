@@ -1,4 +1,7 @@
+// Включаем строгий режим
+'use strict'
 // Попапы
+
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const popupPlace = document.querySelector(".popup_add-mesto"); // попап добавления нового места
 
@@ -27,7 +30,7 @@ const cardNameInput = popupPlace.querySelector(".popup__input_mesto-name"); // �
 const cardUrlInput = popupPlace.querySelector(".popup__input_mesto-url"); // инпут ссылки на изображение
 const buttonAddPlace = document.querySelector(".profile__add-button"); // кнопка добавления места
 
-// Кнопка закрытия попапов (для всех)
+// Кнопка закрытия попапов (для всех) 
 const closeButtons = document.querySelectorAll(".popup__close-button");
 
 //Попап открытой карточки места
@@ -102,14 +105,44 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupEditProfile); // попап закроется по клику на кнопку сохранения
 };
 
+function resetInputError(input) {
+  const inputList = input.querySelectorAll('.popup__input');
+  inputList.forEach(inputElement => {
+    hideInputError(input, inputElement, VALIDATION_CONFIG);
+  });
+};
+
+
 //Открытие попапа
-function openPopup(evt) {
+function openPopup(evt) {  
   evt.classList.add("popup_opened");
+  document.addEventListener('keydown',closePopupEsc);
+ 
+};
+
+
+
+//Функция для закрытия попапов по клику на esc
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    // resetInputError(evt);//Очищаем ошибки при закрытии попапов
+    closePopup(popupOpened);
+  }
+};
+
+//Функция для закрытия попапов по клику на оверлей
+function overlayClick(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  };
 };
 
 //Закрытие попапов
 function closePopup(evt) {
   evt.classList.remove("popup_opened");
+  document.removeEventListener('keydown',closePopupEsc);
+ 
 };
 
 //Создание слушателей для кнопок закрытия
@@ -122,19 +155,37 @@ closeButtons.forEach((button) => {
 // он будет следить за событием “submit” - «отправка»
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 addFormElement.addEventListener("submit", handleAddPlace);
-
 buttonAddPlace.addEventListener("click", () => {
   addFormElement.reset(); // Очищение полей при открытии, т.е.
   //без этого в форме могут отображаться старые значения, если они не были отправлены
+ 
   openPopup(popupPlace);
 });
+
+function resetInputError(input) {
+  const inputList = input.querySelectorAll('.popup__text-input');
+  inputList.forEach(inputElement => {
+    hideInputError(input, inputElement, validationConfig);
+  });
+};
 
 //Слушатель для редактирования профиля
 editProfileButton.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
-  descriptionInput.value = profileDescription.textContent;
+  descriptionInput.value = profileDescription.textContent; 
   openPopup(popupEditProfile);
 });
 
+//Слушатели для закрытия попапов (оверлей)
+popupEditProfile.addEventListener('mousedown',overlayClick);
+popupPlace.addEventListener('mousedown', overlayClick);
+cardPopupImage.addEventListener('mousedown', overlayClick);
+
 //карточки из initialCards
 renderCardsArray(initialCards);
+
+
+
+
+
+ 
