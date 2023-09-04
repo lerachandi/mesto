@@ -105,13 +105,6 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupEditProfile); // попап закроется по клику на кнопку сохранения
 };
 
-function resetInputError(input) {
-  const inputList = input.querySelectorAll('.popup__input');
-  inputList.forEach(inputElement => {
-    hideInputError(input, inputElement, VALIDATION_CONFIG);
-  });
-};
-
 
 //Открытие попапа
 function openPopup(evt) {  
@@ -119,8 +112,6 @@ function openPopup(evt) {
   document.addEventListener('keydown',closePopupEsc);
  
 };
-
-
 
 //Функция для закрытия попапов по клику на esc
 function closePopupEsc(evt) {
