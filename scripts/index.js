@@ -117,7 +117,6 @@ function openPopup(evt) {
 function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
-    // resetInputError(evt);//Очищаем ошибки при закрытии попапов
     closePopup(popupOpened);
   }
 };
