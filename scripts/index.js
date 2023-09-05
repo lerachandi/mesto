@@ -19,6 +19,7 @@ const editProfileButton = profile.querySelector(".profile__edit-button"); // к�
 const profileFormElement = popupEditProfile.querySelector(".popup__form"); // форма: название, описание, кнопка
 const nameInput = profileFormElement.querySelector(".popup__input_profile_edit-name"); // инпут имени
 const descriptionInput = profileFormElement.querySelector(".popup__input_profile_edit-description"); // инпут описание
+const profileSubmitButton = profileFormElement.querySelector('.popup__save-button');
 
 //Место: для загрузки картинок
 const cardsContainer = document.querySelector(".cards");
@@ -29,6 +30,7 @@ const addFormElement = popupPlace.querySelector(".popup__form");
 const cardNameInput = popupPlace.querySelector(".popup__input_mesto-name"); // инпут названия
 const cardUrlInput = popupPlace.querySelector(".popup__input_mesto-url"); // инпут ссылки на изображение
 const buttonAddPlace = document.querySelector(".profile__add-button"); // кнопка добавления места
+const addSubmitButton = addFormElement.querySelector('.popup__save-button');
 
 // Кнопка закрытия попапов (для всех) 
 const closeButtons = document.querySelectorAll(".popup__close-button");
@@ -93,6 +95,7 @@ function handleAddPlace(evt) {
     link: cardUrlInput.value,
   };
   renderCard(createCard);
+  disableButton(addSubmitButton, validationConfig);
   closePopup(popupPlace);
 };
 
@@ -102,6 +105,7 @@ function handleProfileFormSubmit(evt) {
   // Получение значений полей descriptionInput и nameInput из свойства value:
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
+  disableButton(profileSubmitButton, validationConfig);
   closePopup(popupEditProfile); // попап закроется по клику на кнопку сохранения
 };
 
@@ -131,6 +135,7 @@ function overlayClick(evt) {
 //Закрытие попапов
 function closePopup(evt) {
   evt.classList.remove("popup_opened");
+  resetInputError(evt); //Сброс ошибок
   document.removeEventListener('keydown',closePopupEsc);
  
 };
@@ -152,12 +157,6 @@ buttonAddPlace.addEventListener("click", () => {
   openPopup(popupPlace);
 });
 
-function resetInputError(input) {
-  const inputList = input.querySelectorAll('.popup__text-input');
-  inputList.forEach(inputElement => {
-    hideInputError(input, inputElement, validationConfig);
-  });
-};
 
 //Слушатель для редактирования профиля
 editProfileButton.addEventListener("click", () => {

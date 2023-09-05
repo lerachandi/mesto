@@ -34,6 +34,14 @@ const checkInputValidity = (formElement, inputElement, config) => {
   };
 };
 
+//Функция для сброса ошибок после закрытия попапов
+function resetInputError(input) {
+  const inputList = input.querySelectorAll('.popup__input');
+  inputList.forEach(inputElement => {
+    hideInputError(input, inputElement, validationConfig);
+  });
+};
+
 //Проверка валидности инпута
 const hasInvalidInput = (inputList) => {
   return inputList.some(inputElement => {
