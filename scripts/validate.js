@@ -13,7 +13,7 @@ const validationConfig = {
 const showInputError = (formElement, inputElement, errorMessage, config) => {
   const formErrorElement = formElement.querySelector(`.${inputElement.id}-error`); 
   inputElement.classList.add(config.inputErrorClass);
-  formErrorElement.textContent = errorMessage;
+  formErrorElement.textContent = errorMessage; 
   formErrorElement.classList.add(config.errorClass);
 };
 
@@ -34,13 +34,14 @@ const checkInputValidity = (formElement, inputElement, config) => {
   };
 };
 
-//Функция для сброса ошибок после закрытия попапов
-function resetInputError(input) {
-  const inputList = input.querySelectorAll('.popup__input');
+//Функция для сброса ошибок
+function resetFormErrors(formSelector, formElement, config) {
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   inputList.forEach(inputElement => {
-    hideInputError(input, inputElement, validationConfig);
+    hideInputError(formElement, inputElement, config);
   });
 };
+
 
 //Проверка валидности инпута
 const hasInvalidInput = (inputList) => {
@@ -48,6 +49,7 @@ const hasInvalidInput = (inputList) => {
     return !inputElement.validity.valid;
   });
 };
+
 
 //Включение кнопки сохранения
 const disableButton = (button, config) => {
@@ -82,6 +84,10 @@ const setEventListeners = (formElement, config) => {
       toggleButtonState(inputList, buttonElement, config);
     });
   });
+  formElement.addEventListener('reset', () => {
+    disableButton(buttonElement, config);
+  });
+
 };
 
 //Функция валидации

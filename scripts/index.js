@@ -1,7 +1,6 @@
 // Включаем строгий режим
 'use strict'
 // Попапы
-
 const popupEditProfile = document.querySelector(".popup_edit-profile");
 const popupPlace = document.querySelector(".popup_add-mesto"); // попап добавления нового места
 
@@ -75,7 +74,7 @@ function createCard(cardData) {
   return card;
 };
 
-//добавление карточки в начало списка
+//добавление карточки в начало списка ё
 function renderCard(item) {
   cardsContainer.prepend(createCard(item));
 };
@@ -105,7 +104,8 @@ function handleProfileFormSubmit(evt) {
   // Получение значений полей descriptionInput и nameInput из свойства value:
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
-  disableButton(profileSubmitButton, validationConfig);
+  isProfileEdited = true;
+  disableButton(profileSubmitButton, validationConfig);  
   closePopup(popupEditProfile); // попап закроется по клику на кнопку сохранения
 };
 
@@ -113,9 +113,9 @@ function handleProfileFormSubmit(evt) {
 //Открытие попапа
 function openPopup(evt) {  
   evt.classList.add("popup_opened");
-  document.addEventListener('keydown',closePopupEsc);
- 
-};
+  document.addEventListener('keydown', closePopupEsc);
+  
+}
 
 //Функция для закрытия попапов по клику на esc
 function closePopupEsc(evt) {
@@ -134,8 +134,7 @@ function overlayClick(evt) {
 
 //Закрытие попапов
 function closePopup(evt) {
-  evt.classList.remove("popup_opened");
-  resetInputError(evt); //Сброс ошибок
+  evt.classList.remove("popup_opened");  
   document.removeEventListener('keydown',closePopupEsc);
  
 };
@@ -151,17 +150,18 @@ closeButtons.forEach((button) => {
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 addFormElement.addEventListener("submit", handleAddPlace);
 buttonAddPlace.addEventListener("click", () => {
-  addFormElement.reset(); // Очищение полей при открытии, т.е.
-  //без этого в форме могут отображаться старые значения, если они не были отправлены
- 
+addFormElement.reset(); // Очищение полей при открытии, т.е.
+//   //без этого в форме могут отображаться старые значения, если они не были отправлены 
+  resetFormErrors(popupPlace, addFormElement, validationConfig); 
   openPopup(popupPlace);
-});
+}); 
 
 
 //Слушатель для редактирования профиля
 editProfileButton.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent; 
+  resetFormErrors(popupEditProfile, profileFormElement, validationConfig);
   openPopup(popupEditProfile);
 });
 
@@ -172,9 +172,3 @@ cardPopupImage.addEventListener('mousedown', overlayClick);
 
 //карточки из initialCards
 renderCardsArray(initialCards);
-
-
-
-
-
- 
