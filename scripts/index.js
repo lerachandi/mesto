@@ -104,7 +104,6 @@ function handleProfileFormSubmit(evt) {
   // Получение значений полей descriptionInput и nameInput из свойства value:
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
-  isProfileEdited = true;
   disableButton(profileSubmitButton, validationConfig);  
   closePopup(popupEditProfile); // попап закроется по клику на кнопку сохранения
 };
