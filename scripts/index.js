@@ -21,19 +21,19 @@ const profileDescription = profile.querySelector(".profile__description"); //о�
 const profileName = profile.querySelector(".profile__name"); //отображаемое имя
 const editProfileButton = profile.querySelector(".profile__edit-button"); // кнопка редактирования профиля
 //Профиль: форма
-const profileFormElement = popupEditProfile.querySelector(".popup__form"); // форма: название, описание, кнопка
+const profileFormElement = popupEditProfile.querySelector("#edit-profile"); // форма: название, описание, кнопка
 const nameInput = profileFormElement.querySelector(".popup__input_profile_edit-name"); // инпут имени
 const descriptionInput = profileFormElement.querySelector(".popup__input_profile_edit-description"); // инпут описание
-const profileSubmitButton = profileFormElement.querySelector('.popup__save-button');
+// const profileSubmitButton = profileFormElement.querySelector('.popup__save-button');
 //Место: для загрузки картинок
 const cardsContainer = document.querySelector(".cards");
 const cardsTemplate = document.querySelector("#cards-template").content;
 //Место: форма
-const addFormElement = popupPlace.querySelector(".popup__form");
+const addFormElement = popupPlace.querySelector("#add-place");
 const cardNameInput = popupPlace.querySelector(".popup__input_mesto-name"); // инпут названия
 const cardUrlInput = popupPlace.querySelector(".popup__input_mesto-url"); // инпут ссылки на изображение
 const buttonAddPlace = document.querySelector(".profile__add-button"); // кнопка добавления места
-const addSubmitButton = addFormElement.querySelector('.popup__save-button');
+// const addSubmitButton = addFormElement.querySelector('.popup__save-button');
 // Кнопка закрытия попапов (для всех) 
 const closeButtons = document.querySelectorAll(".popup__close-button");
 //Попап открытой карточки места
@@ -145,9 +145,9 @@ forms.forEach((formElement) => {
   const formValidator = new FormValidator(validationConfig, formElement);
   formValidator.enableValidation();
 
-  if (formElement.id === 'edit-form') {
+  if (formElement.id === 'edit-profile') {
     formElement.addEventListener('submit', handleProfileFormSubmit);
-  } else if (formElement.id === 'add-form') {
+  } else if (formElement.id === 'add-place') {
     formElement.addEventListener('submit', handlePlaceFormSubmit);
   }
 });
