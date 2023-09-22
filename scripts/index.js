@@ -37,8 +37,6 @@ const buttonAddPlace = document.querySelector(".profile__add-button"); // кно
 const closeButtons = document.querySelectorAll(".popup__close-button");
 //Попап открытой карточки места
 const modalTitle = cardPopupImage.querySelector(".popup__description");
-//Все формы
-const forms = document.querySelectorAll('.popup__form');
 
 //Функция открытия изображения в полном размере
 function openImagePopup(imageSrc, imageCaption) {
